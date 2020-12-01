@@ -21,28 +21,34 @@ struct EmojiMemoryGameView: View {
         }
         .padding()
         .foregroundColor(Color.orange)
-        .font(Font.largeTitle)
+        
     }
 }
 
 struct CardView: View {
     var card: MemoryGameLogic<String>.Card
+    
     var body: some View{
+        GeometryReader(content: {geometry in
         ZStack {
             if(card.isFaceUp){
-                RoundedRectangle(cornerRadius: 10.0).fill(Color.white)
-                RoundedRectangle(cornerRadius: 10.0).stroke(lineWidth:3)  //in points
+                RoundedRectangle(cornerRadius: cornerRadisu).fill(Color.white)
+                RoundedRectangle(cornerRadius: cornerRadisu).stroke(lineWidth:edgeLineWidth)  //in points
                     Text(card.content)
-                
             }
             else{
-                RoundedRectangle(cornerRadius: 10.0).fill()
+                RoundedRectangle(cornerRadius: cornerRadisu).fill()
         
             }
         }
-    }
+        .font(Font.system(size: min(geometry.size.width, geometry.size.height)*fontScaleFactor))
+    })
 }
-
+    // MARK: - Drawing Constants
+    let cornerRadisu: CGFloat = 10.0
+    let edgeLineWidth: CGFloat = 3
+    let fontScaleFactor: CGFloat = 0.75
+}
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         EmojiMemoryGameView(GameVM: EmojiMemoryGame())
