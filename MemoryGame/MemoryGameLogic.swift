@@ -8,9 +8,9 @@
 import Foundation
 
 struct MemoryGameLogic<CardContent> where CardContent: Equatable{
-    var cards: Array<Card>
+   private(set) var cards: Array<Card>
     
-    var IndexOfOnlyFaceUpCard: Int? {
+    private var IndexOfOnlyFaceUpCard: Int? {
         get{
             cards.indices.filter {index -> Bool in cards[index].isFaceUp }.only
         }

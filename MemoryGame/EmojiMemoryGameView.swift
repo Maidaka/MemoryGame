@@ -45,9 +45,9 @@ struct CardView: View {
     })
 }
     // MARK: - Drawing Constants
-    let cornerRadisu: CGFloat = 10.0
-    let edgeLineWidth: CGFloat = 3
-    let fontScaleFactor: CGFloat = 0.75
+   private let cornerRadisu: CGFloat = 10.0
+    private let edgeLineWidth: CGFloat = 3
+    private let fontScaleFactor: CGFloat = 0.75
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
