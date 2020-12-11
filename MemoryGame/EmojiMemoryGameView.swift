@@ -11,16 +11,23 @@ struct EmojiMemoryGameView: View {
     @ObservedObject var GameVM: EmojiMemoryGame
     
     var body: some View {
-        Grid(GameVM.cards) { card in
-                CardView(card: card).onTapGesture{
-                    GameVM.choose(card: card)
-                    
+        VStack{
+            Grid(GameVM.cards) { card in
+                    CardView(card: card).onTapGesture{
+                        withAnimation(.linear(duration: 0.5)){
+                        GameVM.choose(card: card)
+                        }
+                    }
+                    .padding(5)
+            }
+            .padding()
+            .foregroundColor(Color.orange)
+            Button(action: {
+                withAnimation(.easeInOut(duration: 0.75)) {
+                    self.GameVM.resetGame()
                 }
-                .padding(5)
+            }, label: { Text("New Game")}) //strings can be internationalizible - localized string key
         }
-        .padding()
-        .foregroundColor(Color.orange)
-        
     }
 }
 
@@ -42,6 +49,8 @@ struct CardView: View {
                         .font(Font.system(size: fontSize(for: size)))
             }
         .cardify(isFaceUp: card.isFaceUp)
+            .transition(AnyTransition.scale)
+        
         }
     }
 

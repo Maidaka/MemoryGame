@@ -28,4 +28,8 @@ class EmojiMemoryGame: ObservableObject {
     func choose(card: MemoryGameLogic<String>.Card){
         GameModel.choose(card: card)
     }
+    
+    func resetGame(){
+        GameModel = EmojiMemoryGame.createMemoryGame()
+    }
 }
