@@ -1,2 +1,2 @@
 # MemoryGame
-Stanford CS193p course assignment based on the Set Game project
+Stanford CS193p course project developed partly while following the course material
